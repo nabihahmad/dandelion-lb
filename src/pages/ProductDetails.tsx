@@ -22,6 +22,7 @@ export default function ProductDetails() {
   const { addToCart } = useCart();
   const { toast } = useToast();
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [showSizeGuide, setShowSizeGuide] = useState<boolean>(false);
 
   const product = products.find((p) => p.id === id);
 
@@ -102,13 +103,50 @@ export default function ProductDetails() {
                 <CarouselPrevious className="left-2" />
                 <CarouselNext className="right-2" />
               </Carousel>
+
+              {/* Sizes Guide */}
+                <div className="mt-8">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowSizeGuide(true)}
+                  className="w-full"
+                >
+                  View Size Guide
+                </Button>
+                </div>
+
+                {/* Size Guide Overlay */}
+                {showSizeGuide && (
+                <div
+                  className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+                  onClick={() => setShowSizeGuide(false)}
+                >
+                  <div
+                  className="bg-background rounded-lg max-w-2xl w-full"
+                  onClick={(e) => e.stopPropagation()}
+                  >
+                  <img
+                    src={new URL('../assets/sizes/zippers.jpeg', import.meta.url).href}
+                    alt="Size Guide"
+                    className="w-full rounded-lg"
+                  />
+                  <Button
+                    variant="ghost"
+                    onClick={() => setShowSizeGuide(false)}
+                    className="w-full mt-4"
+                  >
+                    Close
+                  </Button>
+                  </div>
+                </div>
+                )}
             </div>
 
             {/* Product Info */}
             <div className="flex flex-col">
               <Badge
                 className="w-fit mb-3"
-                variant={product.category === 'girls' ? 'default' : 'secondary'}
+                variant={product.category === 'onesies' ? 'default' : 'secondary'}
               >
                 {product.category}
               </Badge>

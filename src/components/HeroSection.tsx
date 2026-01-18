@@ -19,8 +19,8 @@ export default function HeroSection() {
       <div className="container relative z-10 py-20">
         <div className="max-w-2xl">
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 font-serif leading-tight">
-            Adorable Fashion for
-            <span className="text-primary block">Little Stars</span>
+            Adorable Fashion by
+            <span className="text-primary block">Dandelion</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg">
             Discover our collection of comfortable, stylish, and playful clothing
@@ -32,9 +32,14 @@ export default function HeroSection() {
                 Shop Now
               </Button>
             </Link>
-            <Link to="/shop?category=girls">
+            <Link to="/shop?category=zippers">
               <Button variant="outline" size="lg" className="text-lg px-8">
-                Girls Collection
+                Zippers Collection
+              </Button>
+            </Link>
+            <Link to="/shop?category=onesies">
+              <Button variant="outline" size="lg" className="text-lg px-8">
+                Onesies Collection
               </Button>
             </Link>
           </div>

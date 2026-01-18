@@ -1,25 +1,20 @@
-import { Truck, Shield, Heart, RefreshCw } from 'lucide-react';
+import { Heart, Palette, Baby } from 'lucide-react';
 
 const features = [
   {
     icon: Heart,
-    title: 'Made with Love',
-    description: 'Each piece is carefully selected for quality and comfort',
+    title: 'Three Times Softer Than Cotton',
+    description: 'Bamboo fabric is exceptionally soft, breathable, and gentle—perfect for delicate and sensitive skin.',
   },
   {
-    icon: Truck,
-    title: 'Cash on Delivery',
-    description: 'Pay when you receive - no hassle, no worries',
+    icon: Palette,
+    title: 'Color That Lasts',
+    description: 'Our prints are designed to stay vibrant, even after frequent washing.',
   },
   {
-    icon: Shield,
-    title: 'Safe Materials',
-    description: 'All fabrics are child-safe and hypoallergenic',
-  },
-  {
-    icon: RefreshCw,
-    title: 'Easy Returns',
-    description: 'Not satisfied? Return within 7 days',
+    icon: Baby,
+    title: 'Extra Stretch for Growing Babies',
+    description: 'Our fabric is more flexible than cotton and designed to last up to twice as long, giving your little one comfort that grows with them.',
   },
 ];
 

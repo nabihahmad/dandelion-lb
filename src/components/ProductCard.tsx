@@ -44,7 +44,7 @@ export default function ProductCard({ product }: ProductCardProps) {
           />
           <Badge
             className="absolute top-2 left-2"
-            variant={product.category === 'girls' ? 'default' : 'secondary'}
+            variant={product.category === 'onesies' ? 'default' : 'secondary'}
           >
             {product.category}
           </Badge>

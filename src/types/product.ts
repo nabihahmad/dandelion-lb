@@ -3,7 +3,7 @@ export interface Product {
   name: string;
   price: number;
   description: string;
-  category: 'boys' | 'girls' | 'unisex';
+  category: 'zippers' | 'onesies';
   sizes: string[];
   image: string;
   inStock: boolean;

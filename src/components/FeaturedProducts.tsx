@@ -22,6 +22,14 @@ export default function FeaturedProducts() {
           ))}
         </div>
       </div>
+      <div className="container mt-12 flex justify-center">
+        <a
+          href="/shop"
+          className="px-8 py-3 bg-foreground text-background font-semibold rounded-lg hover:bg-foreground/90 transition-colors"
+        >
+          View All Products
+        </a>
+      </div>
     </section>
   );
 }

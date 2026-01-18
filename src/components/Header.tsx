@@ -13,8 +13,8 @@ export default function Header() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Shop', href: '/shop' },
-    { name: 'Boys', href: '/shop?category=boys' },
-    { name: 'Girls', href: '/shop?category=girls' },
+    { name: 'Zippers', href: '/shop?category=zippers' },
+    { name: 'Onesies', href: '/shop?category=onesies' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -23,7 +23,7 @@ export default function Header() {
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
           <span className="text-2xl font-bold text-primary font-serif">
-            Little Stars
+            Dandelion
           </span>
         </Link>
 

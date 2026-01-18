@@ -15,9 +15,8 @@ export default function Shop() {
 
   const categories = [
     { key: null, label: 'All' },
-    { key: 'boys', label: 'Boys' },
-    { key: 'girls', label: 'Girls' },
-    { key: 'unisex', label: 'Unisex' },
+    { key: 'zippers', label: 'Zippers' },
+    { key: 'onesies', label: 'Onesies' },
   ];
 
   const filteredProducts = useMemo(() => {

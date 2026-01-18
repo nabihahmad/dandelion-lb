@@ -11,7 +11,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <h3 className="text-2xl font-bold text-primary font-serif mb-4">
-              Little Stars
+              Dandelion
             </h3>
             <p className="text-muted-foreground mb-4">
               Adorable fashion for your little ones. Quality, comfort, and style
@@ -33,18 +33,18 @@ export default function Footer() {
               </li>
               <li>
                 <Link
-                  to="/shop?category=boys"
+                  to="/shop?category=zippers"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Boys Collection
+                  Zippers Collection
                 </Link>
               </li>
               <li>
                 <Link
-                  to="/shop?category=girls"
+                  to="/shop?category=onesies"
                   className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  Girls Collection
+                  Onesies Collection
                 </Link>
               </li>
               <li>
@@ -87,7 +87,7 @@ export default function Footer() {
 
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Little Stars. All rights reserved.
+            © {new Date().getFullYear()} Dandelion. All rights reserved.
           </p>
         </div>
       </div>
