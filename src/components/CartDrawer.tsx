@@ -45,7 +45,7 @@ export default function CartDrawer() {
             className="flex gap-4 py-4 border-b border-border"
           >
             <img
-              src={item.product.image}
+              src={`https://cdn.jsdelivr.net/gh/nabihahmad/dandelion-lb-products@master/images/${item.product.image}`}
               alt={item.product.name}
               className="h-20 w-20 object-cover rounded-lg bg-muted"
             />

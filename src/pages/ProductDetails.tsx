@@ -91,7 +91,7 @@ export default function ProductDetails() {
                     <CarouselItem key={index}>
                       <div className="aspect-square overflow-hidden rounded-xl bg-muted">
                         <img
-                          src={image}
+                          src={`https://cdn.jsdelivr.net/gh/nabihahmad/dandelion-lb-products@master/images/${image}`}
                           alt={`${product.name} - Image ${index + 1}`}
                           className="h-full w-full object-cover"
                         />
