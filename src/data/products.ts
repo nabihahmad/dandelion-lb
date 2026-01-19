@@ -174,7 +174,7 @@ export const products: Product[] = [
     category: 'onesies',
     sizes: ['0-3M', '3-6M', '6-9M', '9-12M', '12-18M', '18-24M'],
     image: '/products/16/image00003.png',
-    images: ['/products/16/image00003.png'],
+    images: ['/products/16/image00003.png', '/products/15/image00001.jpg','/products/15/image00008.jpg','/products/15/image00002.jpg','/products/15/image00010.jpg','/products/15/image00004.jpg'],
     inStock: true,
   },
   {
@@ -185,7 +185,7 @@ export const products: Product[] = [
     category: 'onesies',
     sizes: ['0-3M', '3-6M', '6-9M', '9-12M', '12-18M', '18-24M'],
     image: '/products/17/image00009.png',
-    images: ['/products/17/image00009.png'],
+    images: ['/products/17/image00009.png', '/products/15/image00001.jpg','/products/15/image00008.jpg','/products/15/image00002.jpg','/products/15/image00010.jpg','/products/15/image00004.jpg'],
     inStock: true,
   },
   {
@@ -207,7 +207,7 @@ export const products: Product[] = [
     category: 'onesies',
     sizes: ['0-3M', '3-6M', '6-9M', '9-12M', '12-18M', '18-24M'],
     image: '/products/19/image00113.png',
-    images: ['/products/19/image00113.png'],
+    images: ['/products/19/image00113.png', '/products/18/image00111.jpg','/products/18/image00119.jpg','/products/18/image00114.jpg','/products/18/image00120.jpg','/products/18/image00115.jpg'],
     inStock: true,
   },
   {
@@ -218,7 +218,7 @@ export const products: Product[] = [
     category: 'onesies',
     sizes: ['0-3M', '3-6M', '6-9M', '9-12M', '12-18M', '18-24M'],
     image: '/products/20/image00112.png',
-    images: ['/products/20/image00112.png'],
+    images: ['/products/20/image00112.png', '/products/18/image00111.jpg','/products/18/image00119.jpg','/products/18/image00114.jpg','/products/18/image00120.jpg','/products/18/image00115.jpg'],
     inStock: true,
   },
   {
@@ -240,7 +240,7 @@ export const products: Product[] = [
     category: 'onesies',
     sizes: ['0-3M', '3-6M', '6-9M', '9-12M', '12-18M', '18-24M'],
     image: '/products/22/image00224.png',
-    images: ['/products/22/image00224.png'],
+    images: ['/products/22/image00224.png', '/products/21/image00221.jpg','/products/21/image00226.jpg','/products/21/image00229.jpg','/products/21/image00222.jpg','/products/21/image00225.jpg'],
     inStock: true,
   },
   {
@@ -251,7 +251,7 @@ export const products: Product[] = [
     category: 'onesies',
     sizes: ['0-3M', '3-6M', '6-9M', '9-12M', '12-18M', '18-24M'],
     image: '/products/23/image00223.png',
-    images: ['/products/23/image00223.png'],
+    images: ['/products/23/image00223.png', '/products/21/image00221.jpg','/products/21/image00226.jpg','/products/21/image00229.jpg','/products/21/image00222.jpg','/products/21/image00225.jpg'],
     inStock: true,
   }
 ];

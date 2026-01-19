@@ -127,7 +127,8 @@ export default {
   				'Liberation Mono',
   				'Courier New',
   				'monospace'
-  			]
+  			],
+			logo: ['Kenao', 'serif']
   		}
   	}
   },

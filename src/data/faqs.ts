@@ -25,7 +25,7 @@ export const faqs = [
     },
     {
         question: "How much does shipping cost?",
-        answer: "Enjoy free shipping on all orders over $50. We want your shopping experience with Dandelion to be easy, enjoyable, and worry-free."
+        answer: "Enjoy free shipping on all orders over $50. We want your shopping experience with DANDELION to be easy, enjoyable, and worry-free."
     },
     {
         question: "Can I change my order after placing it?",

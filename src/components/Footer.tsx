@@ -10,8 +10,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand */}
           <div>
-            <h3 className="text-2xl font-bold text-primary font-serif mb-4">
-              Dandelion
+            <h3 className="text-2xl font-bold text-primary font-logo mb-4">
+              DANDELION
             </h3>
             <p className="text-muted-foreground mb-4">
               Adorable fashion for your little ones. Quality, comfort, and style
@@ -87,7 +87,7 @@ export default function Footer() {
 
         <div className="border-t border-border mt-8 pt-8 text-center">
           <p className="text-sm text-muted-foreground">
-            © {new Date().getFullYear()} Dandelion. All rights reserved.
+            © {new Date().getFullYear()} DANDELION. All rights reserved.
           </p>
         </div>
       </div>

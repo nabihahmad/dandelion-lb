@@ -9,6 +9,11 @@
 All colors MUST be HSL.
 */
 
+@font-face {
+  font-family: 'Kenao';
+  src: url('./fonts/Kenao.otf') format('opentype');
+}
+
 @layer base {
   :root {
     --background: 34 100% 97%;
@@ -72,6 +77,8 @@ All colors MUST be HSL.
     --font-sans: 'Montserrat', ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
 
     --font-serif: 'Cormorant Garamond', ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+
+    --font-logo: 'Kenao', serif;
 
     --font-mono: 'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;
 

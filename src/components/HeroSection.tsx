@@ -20,7 +20,7 @@ export default function HeroSection() {
         <div className="max-w-2xl">
           <h1 className="text-4xl md:text-6xl font-bold text-foreground mb-6 font-serif leading-tight">
             Adorable Fashion by
-            <span className="text-primary block">Dandelion</span>
+            <span className="text-primary block font-logo">DANDELION</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-lg">
             Discover our collection of comfortable, stylish, and playful clothing

@@ -22,8 +22,8 @@ export default function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-card/95 backdrop-blur supports-[backdrop-filter]:bg-card/60">
       <div className="container flex h-16 items-center justify-between">
         <Link to="/" className="flex items-center gap-2">
-          <span className="text-2xl font-bold text-primary font-serif">
-            Dandelion
+          <span className="text-2xl font-bold text-primary font-logo">
+            DANDELION
           </span>
           <img 
             src="https://flagcdn.com/lb.svg" 
