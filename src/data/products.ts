@@ -11,6 +11,7 @@ export const products: Product[] = [
     image: '/products/1/DSC_4569-1200X1200px.jpg',
     images: ['/products/1/DSC_4569-1200X1200px.jpg', '/products/1/DSC_4572.jpg', '/products/1/DSC_4560.jpg', '/products/1/DSC_4564.jpg', '/products/1/DSC_4565.jpg', '/products/1/DSC_4566.jpg', '/products/1/DSC_4567.jpg'],
     inStock: true,
+    similarProducts: ['2', '3', '4'],
   },
   {
     id: '2',
@@ -165,6 +166,8 @@ export const products: Product[] = [
     image: '/products/15/image00005.jpg',
     images: ['/products/15/image00001.jpg','/products/15/image00005.jpg','/products/15/image00008.jpg','/products/15/image00002.jpg','/products/15/image00006.jpg','/products/15/image00010.jpg','/products/15/image00004.jpg','/products/15/image00007.jpg'],
     inStock: true,
+    similarProducts: ['18', '16', '17'],
+    sleeve: 'sleeveless',
   },
   {
     id: '16',
@@ -176,6 +179,8 @@ export const products: Product[] = [
     image: '/products/16/image00003.png',
     images: ['/products/16/image00003.png', '/products/15/image00001.jpg','/products/15/image00008.jpg','/products/15/image00002.jpg','/products/15/image00010.jpg','/products/15/image00004.jpg'],
     inStock: true,
+    similarProducts: ['19', '15', '17'],
+    sleeve: 'sleeveless',
   },
   {
     id: '17',
@@ -187,6 +192,8 @@ export const products: Product[] = [
     image: '/products/17/image00009.png',
     images: ['/products/17/image00009.png', '/products/15/image00001.jpg','/products/15/image00008.jpg','/products/15/image00002.jpg','/products/15/image00010.jpg','/products/15/image00004.jpg'],
     inStock: true,
+    similarProducts: ['20', '15', '16'],
+    sleeve: 'sleeveless',
   },
   {
     id: '18',
@@ -198,6 +205,8 @@ export const products: Product[] = [
     image: '/products/18/image00118.jpg',
     images: ['/products/18/image00111.jpg','/products/18/image00116.jpg','/products/18/image00119.jpg','/products/18/image00114.jpg','/products/18/image00117.jpg','/products/18/image00120.jpg','/products/18/image00115.jpg','/products/18/image00118.jpg'],
     inStock: true,
+    similarProducts: ['21', '19', '20'],
+    sleeve: 'short',
   },
   {
     id: '19',
@@ -209,6 +218,8 @@ export const products: Product[] = [
     image: '/products/19/image00113.png',
     images: ['/products/19/image00113.png', '/products/18/image00111.jpg','/products/18/image00119.jpg','/products/18/image00114.jpg','/products/18/image00120.jpg','/products/18/image00115.jpg'],
     inStock: true,
+    similarProducts: ['22', '18', '20'],
+    sleeve: 'short',
   },
   {
     id: '20',
@@ -220,6 +231,8 @@ export const products: Product[] = [
     image: '/products/20/image00112.png',
     images: ['/products/20/image00112.png', '/products/18/image00111.jpg','/products/18/image00119.jpg','/products/18/image00114.jpg','/products/18/image00120.jpg','/products/18/image00115.jpg'],
     inStock: true,
+    similarProducts: ['23', '18', '19'],
+    sleeve: 'short',
   },
   {
     id: '21',
@@ -231,6 +244,8 @@ export const products: Product[] = [
     image: '/products/21/image00228.jpg',
     images: ['/products/21/image00221.jpg','/products/21/image00226.jpg','/products/21/image00229.jpg','/products/21/image00222.jpg','/products/21/image00227.jpg','/products/21/image00230.jpg','/products/21/image00225.jpg','/products/21/image00228.jpg'],
     inStock: true,
+    similarProducts: ['18', '22', '23'],
+    sleeve: 'long',
   },
   {
     id: '22',
@@ -242,6 +257,8 @@ export const products: Product[] = [
     image: '/products/22/image00224.png',
     images: ['/products/22/image00224.png', '/products/21/image00221.jpg','/products/21/image00226.jpg','/products/21/image00229.jpg','/products/21/image00222.jpg','/products/21/image00225.jpg'],
     inStock: true,
+    similarProducts: ['19', '21', '23'],
+    sleeve: 'long',
   },
   {
     id: '23',
@@ -253,5 +270,7 @@ export const products: Product[] = [
     image: '/products/23/image00223.png',
     images: ['/products/23/image00223.png', '/products/21/image00221.jpg','/products/21/image00226.jpg','/products/21/image00229.jpg','/products/21/image00222.jpg','/products/21/image00225.jpg'],
     inStock: true,
+    similarProducts: ['20', '21', '22'],
+    sleeve: 'long',
   }
 ];

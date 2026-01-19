@@ -121,23 +121,34 @@ export default function ProductDetails() {
                   className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
                   onClick={() => setShowSizeGuide(false)}
                 >
-                  <div
-                  className="bg-background rounded-lg max-w-2xl w-full"
-                  onClick={(e) => e.stopPropagation()}
-                  >
-                  <img
-                    src={new URL('../assets/sizes/zippers.jpeg', import.meta.url).href}
+                    <div
+                    className="bg-background rounded-lg max-w-2xl w-full"
+                    onClick={(e) => e.stopPropagation()}
+                    >
+                    <img
+                    src={new URL(
+                      `../assets/sizes/${
+                      product.category === 'zippers'
+                        ? 'zippers.jpeg'
+                        : product.sleeve === 'sleeveless'
+                        ? 'overall-no-sleeves.jpeg'
+                        : product.sleeve === 'short'
+                        ? 'overall-short-sleeves.jpeg'
+                        : 'overall-long-sleeves.jpeg'
+                      }`,
+                      import.meta.url
+                    ).href}
                     alt="Size Guide"
                     className="w-full rounded-lg"
-                  />
-                  <Button
+                    />
+                    <Button
                     variant="ghost"
                     onClick={() => setShowSizeGuide(false)}
                     className="w-full mt-4"
-                  >
+                    >
                     Close
-                  </Button>
-                  </div>
+                    </Button>
+                    </div>
                 </div>
                 )}
             </div>
@@ -226,6 +237,37 @@ export default function ProductDetails() {
                 </a>
               </div>
             </div>
+            {/* Similar Products */}
+            {product.similarProducts?.some((id) => products.some((p) => p.id === id)) && (
+              <div className="md:col-span-2 mt-12 pt-8 border-t">
+              <h2 className="text-2xl font-bold text-foreground mb-6">Similar Products</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                {products
+                .filter((p: typeof products[0]) => product.similarProducts?.includes(p.id))
+                .map((similarProduct) => (
+                  <button
+                  key={similarProduct.id}
+                  onClick={() => navigate(`/product/${similarProduct.id}`)}
+                  className="group text-left"
+                  >
+                  <div className="aspect-square overflow-hidden rounded-lg bg-muted mb-3">
+                    <img
+                    src={`https://cdn.jsdelivr.net/gh/nabihahmad/dandelion-lb-products@master/images/${similarProduct.image}`}
+                    alt={similarProduct.name}
+                    className="h-full w-full object-cover group-hover:scale-105 transition-transform"
+                    />
+                  </div>
+                  <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
+                    {similarProduct.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground">
+                    ${similarProduct.price.toFixed(2)}
+                  </p>
+                  </button>
+                ))}
+              </div>
+              </div>
+            )}
           </div>
         </div>
       </main>
