@@ -1,4 +1,4 @@
-import { ShoppingCart, Menu, X } from 'lucide-react';
+import { ShoppingCart, Menu, X, Instagram } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '@/context/CartContext';
@@ -25,6 +25,11 @@ export default function Header() {
           <span className="text-2xl font-bold text-primary font-serif">
             Dandelion
           </span>
+          <img 
+            src="https://flagcdn.com/lb.svg" 
+            alt="Lebanese flag" 
+            className="h-5 w-8 rounded"
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -41,6 +46,9 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
+          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-foreground/80 hover:text-primary transition-colors">
+            <Instagram className="h-5 w-5" />
+          </a>
           {/* Cart */}
           <Sheet>
             <SheetTrigger asChild>

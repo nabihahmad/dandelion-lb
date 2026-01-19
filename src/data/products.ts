@@ -30,7 +30,7 @@ export const products: Product[] = [
     description: 'Snuggle up with Cuddle Bears! This adorable footie features sweet little bear faces, bringing warmth and charm to your little one’s day. Made from soft, cozy fabric with a convenient zipper, it’s perfect for playtime, naptime, or snuggly adventures.',
     category: 'zippers',
     sizes: ['0-3M', '3-6M', '6-9M', '9-12M', '12-18M'],
-    image: '/products/3/DSC_4542-2.jpg',
+    image: '/products/3/DSC_4538.jpg',
     images: ['/products/3/DSC_4534.jpg', '/products/3/DSC_4535.jpg', '/products/3/DSC_4536.jpg', '/products/3/DSC_4538.jpg', '/products/3/DSC_4539.jpg', '/products/3/DSC_4540.jpg', '/products/3/DSC_4541.jpg', '/products/3/DSC_4542.jpg', '/products/3/DSC_4542-2.jpg', '/products/3/DSC_4544.jpg', '/products/3/DSC_4533.jpg'],
     inStock: true,
   },
