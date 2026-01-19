@@ -46,7 +46,7 @@ export default function Header() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="text-foreground/80 hover:text-primary transition-colors">
+          <a href="https://www.instagram.com/dandelion_leb" target="_blank" rel="noopener noreferrer" className="text-foreground/80 hover:text-primary transition-colors">
             <Instagram className="h-5 w-5" />
           </a>
           {/* Cart */}

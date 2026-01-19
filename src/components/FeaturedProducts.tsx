@@ -1,5 +1,7 @@
 import { products } from '@/data/products';
 import ProductCard from './ProductCard';
+import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 export default function FeaturedProducts() {
   const featuredProducts = products.slice(0, 6);
@@ -23,12 +25,11 @@ export default function FeaturedProducts() {
         </div>
       </div>
       <div className="container mt-12 flex justify-center">
-        <a
-          href="/shop"
-          className="px-8 py-3 bg-foreground text-background font-semibold rounded-lg hover:bg-foreground/90 transition-colors"
-        >
-          View All Products
-        </a>
+        <Link to="/shop">
+          <Button size="lg" className="text-lg px-8  bg-foreground text-background font-semibold rounded-lg hover:bg-foreground/90 transition-colors">
+            View all Products
+          </Button>
+        </Link>
       </div>
     </section>
   );
