@@ -55,9 +55,16 @@ export default function ProductCard({ product }: ProductCardProps) {
         <p className="text-sm text-muted-foreground mb-2 line-clamp-2">
           {product.description}
         </p>
-        <p className="text-lg font-bold text-primary mb-3">
-          ${product.price.toFixed(2)}
-        </p>
+        <div className="mb-3 flex items-center gap-2">
+          {product.originalPrice && (
+            <p className="text-sm text-muted-foreground line-through">
+              ${product.originalPrice.toFixed(2)}
+            </p>
+          )}
+          <p className="text-lg font-bold text-primary">
+            ${product.price.toFixed(2)}
+          </p>
+        </div>
 
         <div className="space-y-3">
           {product.inStock ? (

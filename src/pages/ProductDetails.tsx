@@ -166,9 +166,16 @@ export default function ProductDetails() {
                 {product.name}
               </h1>
 
-              <p className="text-2xl font-bold text-primary mb-4">
-                ${product.price.toFixed(2)}
-              </p>
+                <div className="mb-3 flex items-center gap-2">
+                {product.originalPrice && (
+                  <p className="text-sm text-muted-foreground line-through">
+                  ${product.originalPrice.toFixed(2)}
+                  </p>
+                )}
+                <p className="text-lg font-bold text-primary">
+                  ${product.price.toFixed(2)}
+                </p>
+                </div>
 
               <p className="text-muted-foreground mb-6 leading-relaxed">
                 {product.description}
@@ -260,9 +267,16 @@ export default function ProductDetails() {
                   <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
                     {similarProduct.name}
                   </h3>
-                  <p className="text-sm text-muted-foreground">
-                    ${similarProduct.price.toFixed(2)}
-                  </p>
+                    <div className="mb-3 flex items-center gap-2">
+                    {similarProduct.originalPrice && (
+                      <p className="text-sm text-muted-foreground line-through">
+                      ${similarProduct.originalPrice.toFixed(2)}
+                      </p>
+                    )}
+                    <p className="text-sm font-bold text-primary">
+                      ${similarProduct.price.toFixed(2)}
+                    </p>
+                    </div>
                   </button>
                 ))}
               </div>
