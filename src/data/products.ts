@@ -173,8 +173,8 @@ export const products: Product[] = [
     description: 'This essential 3-pack of White Cotton Sleeveless Onesies is made from soft, breathable cotton to keep your baby comfortable all day. Perfect for layering or wearing on its own in warm weather, each onesie features a smooth finish, gentle stretch, and a sleeveless design that allows free movement. The classic white color makes them easy to mix and match with any outfit, while the convenient multi-pack ensures you always have a fresh, cozy option ready. A must-have staple for everyday wear.',
     category: 'onesies',
     sizes: ['0-3M', '3-6M', '6-9M', '9-12M', '12-18M', '18-24M'],
-    image: '/products/16/image00003.jpg',
-    images: ['/products/16/image00003.jpg'],
+    image: '/products/16/image00003.png',
+    images: ['/products/16/image00003.png'],
     inStock: true,
   },
   {
@@ -184,8 +184,8 @@ export const products: Product[] = [
     description: 'This essential 5-pack of White Cotton Sleeveless Onesies is made from soft, breathable cotton to keep your baby comfortable all day. Perfect for layering or wearing on its own in warm weather, each onesie features a smooth finish, gentle stretch, and a sleeveless design that allows free movement. The classic white color makes them easy to mix and match with any outfit, while the convenient multi-pack ensures you always have a fresh, cozy option ready. A must-have staple for everyday wear.',
     category: 'onesies',
     sizes: ['0-3M', '3-6M', '6-9M', '9-12M', '12-18M', '18-24M'],
-    image: '/products/17/image00009.jpg',
-    images: ['/products/17/image00009.jpg'],
+    image: '/products/17/image00009.png',
+    images: ['/products/17/image00009.png'],
     inStock: true,
   },
   {
