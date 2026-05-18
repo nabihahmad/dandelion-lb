@@ -10,6 +10,7 @@ import { Label } from '@/components/ui/label';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { useToast } from '@/hooks/use-toast';
 import { CheckCircle, Package, MapPin, User } from 'lucide-react';
+import { config } from '@/env';
 
 type Step = 1 | 2 | 3;
 
@@ -18,6 +19,8 @@ export default function Checkout() {
   const { items, totalPrice, clearCart } = useCart();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const makeWebhookUrl = config.makeWebhookUrl;
+  const makeApiKey = config.makeApiKey;
 
   const [formData, setFormData] = useState({
     fullName: '',
@@ -78,24 +81,64 @@ export default function Checkout() {
   const handleSubmit = async () => {
     setIsSubmitting(true);
 
-    // Simulate order submission
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    try {
+      const payload = {
+        customer: {
+          fullName: formData.fullName,
+          phone: formData.phone,
+          address: formData.address,
+          city: formData.city,
+          notes: formData.notes,
+        },
+        items: items.map((item) => ({
+          productId: item.product.id,
+          productName: item.product.name,
+          size: item.size,
+          quantity: item.quantity,
+          unitPrice: item.product.price,
+          lineTotal: item.product.price * item.quantity,
+        })),
+        order: {
+          total: totalPrice,
+          currency: 'USD',
+          paymentMethod: 'Cash on Delivery',
+        },
+      };
 
-    // In a real app, you would send this to your backend
-    console.log('Order submitted:', {
-      customer: formData,
-      items,
-      total: totalPrice,
-    });
+      if (!makeWebhookUrl) {
+        throw new Error('Missing Make.com webhook URL');
+      }
 
-    setOrderComplete(true);
-    clearCart();
-    setIsSubmitting(false);
+      const response = await fetch(makeWebhookUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          ...(makeApiKey ? { 'x-make-apikey': `${makeApiKey}` } : {}),
+        },
+        body: JSON.stringify(payload),
+      });
 
-    toast({
-      title: 'Order Placed Successfully! 🎉',
-      description: "We'll contact you soon to confirm your order.",
-    });
+      if (!response.ok) {
+        throw new Error('Failed to send order to Make.com');
+      }
+
+      setOrderComplete(true);
+      clearCart();
+
+      toast({
+        title: 'Order Placed Successfully! 🎉',
+        description: "We'll contact you soon to confirm your order.",
+      });
+    } catch (error) {
+      toast({
+        title: 'Order submission failed',
+        description: 'Please try again in a moment.',
+        variant: 'destructive',
+      });
+      console.error('Order submission error:', error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   if (items.length === 0 && !orderComplete) {

@@ -4,11 +4,12 @@ import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
 import { SheetHeader, SheetTitle } from '@/components/ui/sheet';
 import { Separator } from '@/components/ui/separator';
+import { config } from '@/env';
 
 export default function CartDrawer() {
   const { items, removeFromCart, updateQuantity, totalPrice, totalItems } = useCart();
 
-  const whatsappNumber = '1234567890'; // Replace with actual WhatsApp number
+  const whatsappNumber = config.whatsappNumber;
   
   const generateWhatsAppMessage = () => {
     let message = 'Hi! I would like to order:\n\n';

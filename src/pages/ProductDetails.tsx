@@ -15,6 +15,7 @@ import {
   CarouselPrevious,
 } from '@/components/ui/carousel';
 import { ArrowLeft, MessageCircle } from 'lucide-react';
+import { config } from '@/env';
 
 export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
@@ -63,7 +64,7 @@ export default function ProductDetails() {
     });
   };
 
-  const whatsappNumber = '1234567890';
+  const whatsappNumber = config.whatsappNumber;
   const whatsappMessage = encodeURIComponent(
     `Hi! I'm interested in: ${product.name} - $${product.price.toFixed(2)}`
   );

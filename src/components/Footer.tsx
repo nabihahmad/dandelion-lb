@@ -1,8 +1,10 @@
 import { MessageCircle, Mail, MapPin } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { config } from '@/env';
 
 export default function Footer() {
-  const whatsappNumber = '1234567890'; // Replace with actual number
+  const whatsappNumber = config.whatsappNumber;
+  const emailAddress = config.emailAddress;
 
   return (
     <footer className="bg-card border-t border-border">
@@ -75,12 +77,12 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-2 text-muted-foreground">
                 <Mail className="h-5 w-5 text-primary" />
-                <span>hello@littlestars.com</span>
+                <span>{emailAddress}</span>
               </li>
-              <li className="flex items-start gap-2 text-muted-foreground">
+              {/* <li className="flex items-start gap-2 text-muted-foreground">
                 <MapPin className="h-5 w-5 text-primary flex-shrink-0 mt-0.5" />
                 <span>123 Fashion Street, Kids Town</span>
-              </li>
+              </li> */}
             </ul>
           </div>
         </div>

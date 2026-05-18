@@ -3,9 +3,11 @@ import Footer from '@/components/Footer';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { MessageCircle, Mail, MapPin, Clock } from 'lucide-react';
+import { config } from '@/env';
 
 export default function Contact() {
-  const whatsappNumber = '1234567890'; // Replace with actual number
+  const whatsappNumber = config.whatsappNumber;
+  const emailAddress = config.emailAddress;
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -68,11 +70,11 @@ export default function Contact() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground">Email</p>
-                      <p className="font-medium text-foreground">hello@littlestars.com</p>
+                      <p className="font-medium text-foreground">{emailAddress}</p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-4">
+                  {/* <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
                       <MapPin className="h-5 w-5 text-accent-foreground" />
                     </div>
@@ -80,9 +82,9 @@ export default function Contact() {
                       <p className="text-sm text-muted-foreground">Location</p>
                       <p className="font-medium text-foreground">123 Fashion Street, Kids Town</p>
                     </div>
-                  </div>
+                  </div> */}
 
-                  <div className="flex items-center gap-4">
+                  {/* <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center">
                       <Clock className="h-5 w-5 text-accent-foreground" />
                     </div>
@@ -90,7 +92,7 @@ export default function Contact() {
                       <p className="text-sm text-muted-foreground">Hours</p>
                       <p className="font-medium text-foreground">9 AM - 9 PM (Daily)</p>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </CardContent>
             </Card>
