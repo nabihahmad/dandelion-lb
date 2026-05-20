@@ -1,12 +1,16 @@
 export interface Product {
   id: string;
   name: string;
+  originalPrice?: number;
   price: number;
   description: string;
   category: 'zippers' | 'onesies';
   sizes: string[];
   image: string;
+  images: string[];
   inStock: boolean;
+  similarProducts?: string[];
+  sleeve?: 'sleeveless' | 'short' | 'long';
 }
 
 export interface CartItem {
