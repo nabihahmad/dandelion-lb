@@ -123,7 +123,7 @@ export default function ProductDetails() {
                   onClick={() => setShowSizeGuide(false)}
                 >
                     <div
-                    className="bg-background rounded-lg max-w-2xl w-full"
+                    className="bg-background rounded-lg w-fit max-w-[90vw]"
                     onClick={(e) => e.stopPropagation()}
                     >
                     <img
@@ -140,7 +140,7 @@ export default function ProductDetails() {
                       import.meta.url
                     ).href}
                     alt="Size Guide"
-                    className="w-full rounded-lg"
+                    className="block w-auto max-w-[90vw] max-h-[80vh] object-contain rounded-lg"
                     />
                     <Button
                     variant="ghost"
