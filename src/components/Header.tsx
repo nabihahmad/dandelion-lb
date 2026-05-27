@@ -1,4 +1,4 @@
-import { ShoppingCart, Menu, X, Instagram } from 'lucide-react';
+import { ShoppingCart, Menu, Instagram } from 'lucide-react';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useCart } from '@/context/CartContext';
