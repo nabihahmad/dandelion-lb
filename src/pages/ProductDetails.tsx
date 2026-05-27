@@ -130,12 +130,12 @@ export default function ProductDetails() {
                     src={new URL(
                       `../assets/sizes/${
                       product.category === 'zippers'
-                        ? 'zippers.jpeg'
+                        ? 'zippers-portrait.jpeg'
                         : product.sleeve === 'sleeveless'
-                        ? 'overall-no-sleeves.jpeg'
+                        ? 'overall-no-sleeves-portrait.jpeg'
                         : product.sleeve === 'short'
-                        ? 'overall-short-sleeves.jpeg'
-                        : 'overall-long-sleeves.jpeg'
+                        ? 'overall-short-sleeves-portrait.jpeg'
+                        : 'overall-long-sleeves-portrait.jpeg'
                       }`,
                       import.meta.url
                     ).href}
