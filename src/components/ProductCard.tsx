@@ -38,7 +38,7 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link to={`/product/${product.id}`} className="block">
         <div className="relative aspect-square overflow-hidden bg-muted">
           <img
-            src={`https://cdn.jsdelivr.net/gh/nabihahmad/dandelion-lb-products@master/images/${product.image}`}
+            src={`https://cdn.jsdelivr.net/gh/nabihahmad/dandelion-lb-products@master/images${product.image}`}
             alt={product.name}
             className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300"
           />

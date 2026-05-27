@@ -38,6 +38,7 @@ export default function Header() {
             <Link
               key={link.name}
               to={link.href}
+              reloadDocument={link.href.startsWith('/shop')}
               className="text-sm font-medium text-foreground/80 hover:text-primary transition-colors"
             >
               {link.name}
