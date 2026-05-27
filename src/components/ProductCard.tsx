@@ -35,7 +35,11 @@ export default function ProductCard({ product }: ProductCardProps) {
 
   return (
     <Card className="group overflow-hidden hover:shadow-lg transition-all duration-300">
-      <Link to={`/product/${product.id}`} className="block">
+      <Link
+        to={`/product/${product.id}`}
+        className="block"
+        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+      >
         <div className="relative aspect-square overflow-hidden bg-muted">
           <img
             src={`https://cdn.jsdelivr.net/gh/nabihahmad/dandelion-lb-products@master/images${product.image}`}

@@ -29,6 +29,7 @@ export default function Footer() {
                 <Link
                   to="/shop"
                   className="text-muted-foreground hover:text-primary transition-colors"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
                   Shop All
                 </Link>
@@ -37,6 +38,7 @@ export default function Footer() {
                 <Link
                   to="/shop?category=zippers"
                   className="text-muted-foreground hover:text-primary transition-colors"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
                   Zippers Collection
                 </Link>
@@ -45,6 +47,7 @@ export default function Footer() {
                 <Link
                   to="/shop?category=onesies"
                   className="text-muted-foreground hover:text-primary transition-colors"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
                   Onesies Collection
                 </Link>
@@ -53,6 +56,7 @@ export default function Footer() {
                 <Link
                   to="/contact"
                   className="text-muted-foreground hover:text-primary transition-colors"
+                  onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
                 >
                   Contact Us
                 </Link>

@@ -255,7 +255,10 @@ export default function ProductDetails() {
                 .map((similarProduct) => (
                   <button
                   key={similarProduct.id}
-                  onClick={() => navigate(`/product/${similarProduct.id}`)}
+                  onClick={() => {
+                    navigate(`/product/${similarProduct.id}`);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  }}
                   className="group text-left"
                   >
                   <div className="aspect-square overflow-hidden rounded-lg bg-muted mb-3">

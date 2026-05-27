@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
-import heroImage from '@/assets/dandelion_4572.jpg';
+import heroImage from '@/assets/dandelion-hero-image.png';
 
 export default function HeroSection() {
   return (

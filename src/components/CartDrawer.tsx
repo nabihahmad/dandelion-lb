@@ -110,7 +110,7 @@ export default function CartDrawer() {
             </Button>
           </a>
           <Link to="/checkout">
-            <Button variant="default" className="w-full">
+            <Button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} variant="default" className="w-full">
               Cash on Delivery
             </Button>
           </Link>

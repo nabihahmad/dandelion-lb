@@ -15,7 +15,7 @@ export default function Header() {
     { name: 'Shop', href: '/shop' },
     { name: 'Zippers', href: '/shop?category=zippers' },
     { name: 'Onesies', href: '/shop?category=onesies' },
-    { name: 'Contact', href: '/contact' },
+    { name: 'Contact us', href: '/contact' },
   ];
 
   return (
