@@ -3,7 +3,7 @@ import type { Product } from '@/types/product';
 export const products: Product[] = [
   {
     id: '1',
-    name: 'Daisy Blossom Convertible footie',
+    name: 'Daisy Blossom convertible footie',
     price: 18.00,
     description: 'Soft pastel waves and cheerful daisies come together in this playful, retro-inspired design.',
     category: 'zippers',
@@ -12,10 +12,11 @@ export const products: Product[] = [
     images: ['/products/1/DSC_4569-1200X1200px.webp', '/products/1/DSC_4572.jpg', '/products/1/DSC_4560.jpg', '/products/1/DSC_4564.jpg', '/products/1/DSC_4565.jpg', '/products/1/DSC_4566.jpg', '/products/1/DSC_4567.jpg'],
     inStock: true,
     similarProducts: ['2', '3', '4'],
+    // bestSeller: true,
   },
   {
     id: '2',
-    name: 'Rose Love Convertible footie',
+    name: 'Rose Love convertible footie',
     price: 18.00,
     description: 'Bold, playful hearts in warm shades of red and pink bring a loving touch to this ultra-soft bamboo zipper footie.',
     category: 'zippers',
@@ -26,7 +27,7 @@ export const products: Product[] = [
   },
   {
     id: '3',
-    name: 'Cuddle Bears Convertible Footies',
+    name: 'Cuddle Bears convertible footie',
     price: 18.00,
     description: 'Snuggle up with Cuddle Bears! This adorable footie features sweet little bear faces, bringing warmth and charm to your little one’s day. Made from soft, cozy fabric with a convenient zipper, it’s perfect for playtime, naptime, or snuggly adventures.',
     category: 'zippers',
@@ -37,7 +38,7 @@ export const products: Product[] = [
   },
   {
     id: '4',
-    name: 'Pink Evil Eye Convertible footie',
+    name: 'Pink Evil Eye convertible footie',
     price: 18.00,
     description: 'Keep your little one stylish and a little mysterious with Eyes on Me! This playful footie features bright blue “evil eye” motifs on a soft pink background, adding a pop of personality to every crawl and toddle. ',
     category: 'zippers',
@@ -48,7 +49,7 @@ export const products: Product[] = [
   },
   {
     id: '5',
-    name: 'Alphabet Zoo Convertible footie',
+    name: 'Alphabet Zoo convertible footie',
     price: 18.00,
     description: 'Explore a world of learning and fun with the Alphabet Zoo footie! Each letter of the alphabet is paired with an adorable animal friend, creating a playful and colorful design that sparks curiosity and early learning.',
     category: 'zippers',
@@ -59,7 +60,7 @@ export const products: Product[] = [
   },
   {
     id: '6',
-    name: 'Under The Sea Convertible Footie',
+    name: 'Under The Sea convertible footie',
     price: 18.00,
     description: 'Dive into cozy adventures with the Under the Sea footie! Featuring playful sharks, colorful fish, and gentle turtles swimming through a lively underwater scene, this footie sparks curiosity and fun at every crawl and step.',
     category: 'zippers',
@@ -70,7 +71,7 @@ export const products: Product[] = [
   },
   {
     id: '7',
-    name: 'Rise and Shine Convertible Footie',
+    name: 'Rise and Shine convertible footie',
     price: 18.00,
     description: 'Start every day with a little magic! The Rise and Shine footie features a cheerful design of bright suns, colorful rainbows, and twinkling stars, bringing warmth and joy to your little one’s morning routine.',
     category: 'zippers',
@@ -81,7 +82,7 @@ export const products: Product[] = [
   },
   {
     id: '8',
-    name: 'Tiny Astranaut Convertible Footie',
+    name: 'Tiny Astranaut convertible footie',
     price: 18.00,
     description: "Suit up for adventure with Tiny Astronaut! Featuring brave little astronauts exploring colorful planets and sparkling stars, this cozy footie brings the wonder of space to your little one's day. Soft fabric and a convenient zipper make it perfect for playtime, naps, and bedtime missions.",
     category: 'zippers',
@@ -92,7 +93,7 @@ export const products: Product[] = [
   },
   {
     id: '9',
-    name: 'Twinkle Nights Convertible Footie',
+    name: 'Twinkle Nights convertible footie',
     price: 18.00,
     description: 'Drift into cozy nights with Twinkle Nights! This footie is adorned with soft moons and twinkling stars, creating a magical bedtime scene for your little one. Made from snuggly fabric with a convenient zipper, it’s perfect for sleepy cuddles, storytime, and sweet dreams under the night sky.',
     category: 'zippers',
@@ -103,7 +104,7 @@ export const products: Product[] = [
   },
   {
     id: '10',
-    name: 'Little florals Convertible Footie ',
+    name: 'Little florals convertible footie ',
     price: 18.00,
     description: 'Soft, comfy, and full of charm—this floral footie wraps your little one in a garden of delicate blooms, ideal for play, sleep, and cuddles.',
     category: 'zippers',
@@ -114,7 +115,7 @@ export const products: Product[] = [
   },
   {
     id: '11',
-    name: 'Colorful Shoal Convertible Footie',
+    name: 'Colorful Shoal convertible footie',
     price: 18.00,
     description: 'Swim into comfort and fun with Colorful Shoal! This playful footie features a school of colorful, cheerful fish, bringing the vibrant underwater world to your little one’s day. Soft, cozy fabric and an easy zipper make it perfect for exploring, napping, or splashing into imaginative adventures.',
     category: 'zippers',
@@ -125,7 +126,7 @@ export const products: Product[] = [
   },
   {
     id: '12',
-    name: 'White Evil Eye Convertible Footie',
+    name: 'White Evil Eye convertible footie',
     price: 18.00,
     description: 'Stand out in style! This white footie features striking evil eye motifs for a playful, protective vibe and all-day comfort.',
     category: 'zippers',
@@ -136,7 +137,7 @@ export const products: Product[] = [
   },
   {
     id: '13',
-    name: 'Cloud Grey Convertible Footie',
+    name: 'Cloud Grey convertible footie',
     price: 18.00,
     description: "This soft, solid grey footie is perfect for everyday wear, naps, or snuggles. Made from plush, cozy fabric with an easy zipper, it's a timeless essential for your little one's wardrobe.",
     category: 'zippers',
@@ -147,7 +148,7 @@ export const products: Product[] = [
   },
   {
     id: '14',
-    name: 'Aqua Dream Convertible Footie',
+    name: 'Aqua Dream convertible footie',
     price: 18.00,
     description: 'Wrap your little one in calm, cool comfort with our Aqua Dream zipper footie. This soothing aqua shade brings a fresh, peaceful feel, perfect for sleep and play. Made from ultra-soft, breathable bamboo fabric, it keeps baby cozy while being gentle on sensitive skin.',
     category: 'zippers',
@@ -158,7 +159,7 @@ export const products: Product[] = [
   },
   {
     id: '15',
-    name: 'White Cotton Sleeveless Onesie 1-pack',
+    name: 'White cotton sleeveless onesie 1-pack',
     price: 8.00,
     description: 'Our White Cotton Sleeveless Onesie is crafted from soft, breathable cotton to keep your little one comfortable all day. Designed for easy layering and warm-weather wear, it features a gentle stretch, smooth seams, and a cozy fit that’s kind to delicate skin. The sleeveless cut allows for freedom of movement, while the classic white color makes it a versatile essential for any baby wardrobe. Perfect on its own or paired under outfits for effortless comfort and style.',
     category: 'onesies',
@@ -171,7 +172,7 @@ export const products: Product[] = [
   },
   {
     id: '16',
-    name: 'White Cotton Sleeveless Onesie 3-Pack',
+    name: 'White cotton sleeveless onesie 3-pack',
     price: 22.00,
     // originalPrice: 24.00,
     description: 'This essential 3-pack of White Cotton Sleeveless Onesies is made from soft, breathable cotton to keep your baby comfortable all day. Perfect for layering or wearing on its own in warm weather, each onesie features a smooth finish, gentle stretch, and a sleeveless design that allows free movement. The classic white color makes them easy to mix and match with any outfit, while the convenient multi-pack ensures you always have a fresh, cozy option ready. A must-have staple for everyday wear.',
@@ -185,7 +186,7 @@ export const products: Product[] = [
   },
   {
     id: '17',
-    name: 'White Cotton Sleeveless Onesie 5-Pack',
+    name: 'White cotton sleeveless onesie 5-pack',
     price: 35.00,
     // originalPrice: 40.00,
     description: 'This essential 5-pack of White Cotton Sleeveless Onesies is made from soft, breathable cotton to keep your baby comfortable all day. Perfect for layering or wearing on its own in warm weather, each onesie features a smooth finish, gentle stretch, and a sleeveless design that allows free movement. The classic white color makes them easy to mix and match with any outfit, while the convenient multi-pack ensures you always have a fresh, cozy option ready. A must-have staple for everyday wear.',
@@ -199,7 +200,7 @@ export const products: Product[] = [
   },
   {
     id: '18',
-    name: 'White Cotton Short Sleeve Onesie 1-Pack',
+    name: 'White cotton short sleeve onesie 1-pack',
     price: 8.00,
     description: 'Our White Cotton Short Sleeve Onesie is made from soft, breathable cotton to keep your baby comfortable throughout the day. Designed for everyday wear, it features a gentle stretch, smooth seams, and short sleeves that provide a cozy yet airy fit. The classic white color makes it perfect for layering or wearing on its own, offering a clean, timeless look that pairs easily with any outfit. Ideal for playtime, naps, and all the little moments in between.',
     category: 'onesies',
@@ -212,7 +213,7 @@ export const products: Product[] = [
   },
   {
     id: '19',
-    name: 'White Cotton Short Sleeve Onesie 3-Pack',
+    name: 'White cotton short sleeve onesie 3-pack',
     price: 22.00,
     // originalPrice: 24.00,
     description: 'This essential 3-pack of White Cotton Short Sleeve Onesies is crafted from soft, breathable cotton to keep your baby comfortable all day long. Designed for everyday wear, each onesie features smooth seams, gentle stretch, and short sleeves for an airy, cozy fit. The classic white color makes them perfect for layering or wearing on their own, while the convenient multi-pack ensures you always have a fresh, clean staple ready. Ideal for playtime, naps, and daily comfort.',
@@ -226,7 +227,7 @@ export const products: Product[] = [
   },
   {
     id: '20',
-    name: 'White Cotton Short Sleeve Onesie 5-Pack',
+    name: 'White cotton short sleeve onesie 5-pack',
     price: 35.00,
     // originalPrice: 40.00,
     description: 'This essential 5-pack of White Cotton Short Sleeve Onesies is crafted from soft, breathable cotton to keep your baby comfortable all day long. Designed for everyday wear, each onesie features smooth seams, gentle stretch, and short sleeves for an airy, cozy fit. The classic white color makes them perfect for layering or wearing on their own, while the convenient multi-pack ensures you always have a fresh, clean staple ready. Ideal for playtime, naps, and daily comfort.',
@@ -240,7 +241,7 @@ export const products: Product[] = [
   },
   {
     id: '21',
-    name: 'White Cotton Long Sleeve Onesie 1-Pack',
+    name: 'White cotton long sleeve onesie 1-pack',
     price: 9.00,
     description: "Our White Cotton Long Sleeve Onesie is made from soft, breathable cotton to keep your baby warm and comfortable throughout the day. Designed with gentle stretch and smooth seams, it offers a cozy fit that's kind to delicate skin. The long sleeves provide extra coverage for cooler days, while the classic white color makes it perfect for layering or wearing on its own. A timeless essential for everyday comfort.",
     category: 'onesies',
@@ -253,7 +254,7 @@ export const products: Product[] = [
   },
   {
     id: '22',
-    name: 'White Cotton Long Sleeve Onesie 3-Pack',
+    name: 'White cotton long sleeve onesie 3-pack',
     price: 23.00,
     // originalPrice: 27.00,
     description: "This 3-pack of White Cotton Long Sleeve Onesies is crafted from premium, breathable cotton for all-day comfort and warmth. Each piece features a soft feel, flexible fit, and long sleeves for added coverage in cooler weather. The clean white color makes them easy to mix and match with any outfit, and the multi-pack ensures you always have a fresh, cozy option ready. A practical and stylish staple for your baby's wardrobe.",
@@ -267,7 +268,7 @@ export const products: Product[] = [
   },
   {
     id: '23',
-    name: 'White Cotton Long Sleeve Onesie 5-Pack',
+    name: 'White cotton long sleeve onesie 5-pack',
     price: 36.00,
     // originalPrice: 45.00,
     description: "This 5-pack of White Cotton Long Sleeve Onesies is crafted from premium, breathable cotton for all-day comfort and warmth. Each piece features a soft feel, flexible fit, and long sleeves for added coverage in cooler weather. The clean white color makes them easy to mix and match with any outfit, and the multi-pack ensures you always have a fresh, cozy option ready. A practical and stylish staple for your baby's wardrobe.",

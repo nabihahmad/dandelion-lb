@@ -156,12 +156,20 @@ export default function ProductDetails() {
 
             {/* Product Info */}
             <div className="flex flex-col">
-              <Badge
-                className="w-fit mb-3"
-                variant={product.category === 'onesies' ? 'default' : 'secondary'}
-              >
-                {product.category}
-              </Badge>
+              <div className="mb-3 flex items-center gap-2">
+                <Badge
+                  className="w-fit"
+                  variant={product.category === 'onesies' ? 'default' : 'secondary'}
+                >
+                  {product.category}
+                </Badge>
+
+                {product.bestSeller && (
+                  <Badge className="w-fit" variant="highlight">
+                    best-seller
+                  </Badge>
+                )}
+              </div>
 
               <h1 className="text-3xl md:text-4xl font-bold text-foreground font-serif mb-2">
                 {product.name}
@@ -255,10 +263,7 @@ export default function ProductDetails() {
                 .map((similarProduct) => (
                   <button
                   key={similarProduct.id}
-                  onClick={() => {
-                    navigate(`/product/${similarProduct.id}`);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
-                  }}
+                  onClick={() => navigate(`/product/${similarProduct.id}`)}
                   className="group text-left"
                   >
                   <div className="aspect-square overflow-hidden rounded-lg bg-muted mb-3">

@@ -11,6 +11,7 @@ export interface Product {
   inStock: boolean;
   similarProducts?: string[];
   sleeve?: 'sleeveless' | 'short' | 'long';
+  bestSeller?: boolean;
 }
 
 export interface CartItem {

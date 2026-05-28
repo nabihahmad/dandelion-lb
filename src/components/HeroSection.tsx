@@ -10,7 +10,7 @@ export default function HeroSection() {
         <img
           src={heroImage}
           alt="Kids fashion collection"
-          className="w-full h-full object-cover"
+          className="w-full h-full object-cover object-right"
         />
         <div className="absolute inset-0 bg-gradient-to-r from-background/90 via-background/70 to-transparent" />
       </div>

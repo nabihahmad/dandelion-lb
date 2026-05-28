@@ -38,7 +38,6 @@ export default function ProductCard({ product }: ProductCardProps) {
       <Link
         to={`/product/${product.id}`}
         className="block"
-        onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       >
         <div className="relative aspect-square overflow-hidden bg-muted">
           <img
@@ -51,7 +50,12 @@ export default function ProductCard({ product }: ProductCardProps) {
             variant={product.category === 'onesies' ? 'default' : 'secondary'}
           >
             {product.category}
+          </Badge >
+          {product.bestSeller && (
+          <Badge className='absolute top-2 right-2' variant="highlight">
+            best-seller
           </Badge>
+          )}
         </div>
       </Link>
       <CardContent className="p-4">
