@@ -6,6 +6,7 @@ export interface Product {
   description: string;
   category: 'zippers' | 'onesies';
   sizes: string[];
+  outOfStockSizes: string[];
   image: string;
   images: string[];
   inStock: boolean;

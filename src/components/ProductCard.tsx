@@ -13,8 +13,15 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [outOfStockSizeClicked, setOutOfStockSizeClicked] = useState<string | null>(null);
   const { addToCart } = useCart();
   const { toast } = useToast();
+  const sizeTextClass =
+    product.category === 'zippers'
+      ? 'text-s md:text-xs'
+      : product.category === 'onesies'
+      ? 'text-xs md:text-[0.65rem]'
+      : 'text-s md:text-xs';
 
   const handleAddToCart = () => {
     if (!selectedSize) {
@@ -59,7 +66,7 @@ export default function ProductCard({ product }: ProductCardProps) {
         </div>
       </Link>
       <CardContent className="p-4">
-        <h3 className="font-semibold text-foreground mb-1">{product.name}</h3>
+        <h3 className="font-semibold text-foreground mb-1 md:min-h-[3.5rem] md:leading-snug">{product.name}</h3>
         <p className="text-sm text-muted-foreground mb-2 line-clamp-2">
           {product.description}
         </p>
@@ -77,22 +84,40 @@ export default function ProductCard({ product }: ProductCardProps) {
         <div className="space-y-3">
           {product.inStock ? (
           <div>
-            <p className="text-xs text-muted-foreground mb-2">Select Size:</p>
+            <p className={`${sizeTextClass} text-muted-foreground mb-2`}>Select Size:</p>
             <div className="flex flex-wrap gap-1">
-              {product.sizes.map((size) => (
-                <button
-                  key={size}
-                  onClick={() => setSelectedSize(size)}
-                  className={`px-2 py-1 text-xs rounded border transition-colors ${
-                    selectedSize === size
-                      ? 'bg-primary text-primary-foreground border-primary'
-                      : 'bg-card text-foreground border-border hover:border-primary'
-                  }`}
-                >
-                  {size}
-                </button>
-              ))}
+              {product.sizes.map((size) => {
+                const isOutOfStock = product.outOfStockSizes.includes(size);
+                return (
+                  <button
+                    key={size}
+                    onClick={() => {
+                      if (isOutOfStock) {
+                        setOutOfStockSizeClicked(size);
+                        setTimeout(() => setOutOfStockSizeClicked(null), 2000);
+                      } else {
+                        setSelectedSize(size);
+                        setOutOfStockSizeClicked(null);
+                      }
+                    }}
+                    className={`px-1 py-1 ${sizeTextClass} rounded border transition-colors ${
+                      isOutOfStock
+                        ? 'bg-muted text-muted-foreground border-border cursor-not-allowed opacity-50 line-through'
+                        : selectedSize === size
+                        ? 'bg-primary text-primary-foreground border-primary'
+                        : 'bg-card text-foreground border-border hover:border-primary'
+                    }`}
+                  >
+                    {size}
+                  </button>
+                );
+              })}
             </div>
+            {outOfStockSizeClicked && (
+              <p className="text-xs text-destructive mt-2">
+                Size {outOfStockSizeClicked} is out of stock
+              </p>
+            )}
           </div>
           ) : (<div></div>)}
           <Button

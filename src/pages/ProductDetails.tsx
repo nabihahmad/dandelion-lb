@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
@@ -12,9 +12,9 @@ import {
   CarouselContent,
   CarouselItem,
   CarouselNext,
-  CarouselPrevious,
+  CarouselPrevious
 } from '@/components/ui/carousel';
-import { ArrowLeft, MessageCircle } from 'lucide-react';
+import { ArrowLeft, MessageCircle, X } from 'lucide-react';
 import { config } from '@/env';
 
 export default function ProductDetails() {
@@ -23,7 +23,47 @@ export default function ProductDetails() {
   const { addToCart } = useCart();
   const { toast } = useToast();
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
+  const [outOfStockSizeClicked, setOutOfStockSizeClicked] = useState<string | null>(null);
   const [showSizeGuide, setShowSizeGuide] = useState<boolean>(false);
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modalIndex, setModalIndex] = useState(0);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [origin, setOrigin] = useState({ x: '50%', y: '50%' });
+  const imgRef = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    if (isModalOpen) document.body.style.overflow = 'hidden';
+    else document.body.style.overflow = '';
+    return () => { document.body.style.overflow = ''; };
+  }, [isModalOpen]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setIsModalOpen(false); };
+    if (isModalOpen) window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [isModalOpen]);
+
+  const openModal = (index = 0, e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    e?.preventDefault();
+    setModalIndex(index);
+    setIsModalOpen(true);
+    setIsZoomed(false);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setIsZoomed(false);
+  };
+
+  const onMove = (e: React.MouseEvent) => {
+    const el = e.currentTarget as HTMLDivElement;
+    const rect = el.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100 * 6;
+    setOrigin({ x: `${x}%`, y: `${y}%` });
+  };
 
   const product = products.find((p) => p.id === id);
 
@@ -91,7 +131,7 @@ export default function ProductDetails() {
                 <CarouselContent>
                   {productImages.map((image, index) => (
                     <CarouselItem key={index}>
-                      <div className="aspect-square overflow-hidden rounded-xl bg-muted">
+                      <div className="aspect-square overflow-hidden rounded-xl bg-muted cursor-zoom-in" onClick={(e) => openModal(index, e)}>
                         <img
                           src={`https://cdn.jsdelivr.net/gh/nabihahmad/dandelion-lb-products@master/images/${image}`}
                           alt={`${product.name} - Image ${index + 1}`}
@@ -152,6 +192,52 @@ export default function ProductDetails() {
                     </div>
                 </div>
                 )}
+
+            {/* Image Modal */}
+            {isModalOpen && (
+              <div
+                className="fixed inset-0 z-50 flex items-center justify-center bg-black/60"
+                onClick={closeModal}
+                role="dialog"
+                aria-modal="true"
+              >
+                <div
+                  className="max-w-[95vw] max-h-[95vh] bg-black relative"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <Button
+                    variant="ghost"
+                    onClick={closeModal}
+                    className="absolute top-2 right-2 z-50 rounded-full h-10 w-10 flex items-center justify-center bg-black/20 hover:bg-black/30 text-black"
+                    aria-label="Close"
+                  >
+                    <X className="h-6 w-6" />
+                  </Button>
+                  <div
+                    className="relative w-full h-full overflow-hidden"
+                    onMouseMove={onMove}
+                    onMouseEnter={() => setIsZoomed(true)}
+                    onMouseLeave={() => setIsZoomed(false)}
+                    onClick={() => setIsZoomed((s) => !s)}
+                  >
+                    <img
+                      ref={imgRef}
+                      src={`https://cdn.jsdelivr.net/gh/nabihahmad/dandelion-lb-products@master/images/${productImages[modalIndex]}`}
+                      alt={product.name}
+                      style={{
+                        width: '100%',
+                        height: '100%',
+                        objectFit: 'contain',
+                        transformOrigin: `${origin.x} ${origin.y}`,
+                        transform: isZoomed ? 'scale(1.5)' : 'scale(1)',
+                        transition: 'transform 200ms ease',
+                        cursor: isZoomed ? 'zoom-out' : 'zoom-in',
+                      }}
+                    />
+                  </div>
+                </div>
+              </div>
+            )}
             </div>
 
             {/* Product Info */}
@@ -195,21 +281,39 @@ export default function ProductDetails() {
                 <h3 className="font-semibold text-foreground mb-3">
                   Select Size
                 </h3>
-                <div className="flex flex-wrap gap-2">
-                  {product.sizes.map((size) => (
-                    <button
-                      key={size}
-                      onClick={() => setSelectedSize(size)}
-                      className={`px-4 py-2 rounded-lg border-2 font-medium transition-all ${
-                        selectedSize === size
-                          ? 'bg-primary text-primary-foreground border-primary'
-                          : 'bg-card text-foreground border-border hover:border-primary'
-                      }`}
-                    >
-                      {size}
-                    </button>
-                  ))}
+                <div className="flex flex-wrap gap-1">
+                  {product.sizes.map((size) => {
+                    const isOutOfStock = product.outOfStockSizes.includes(size);
+                    return (
+                      <button
+                        key={size}
+                        onClick={() => {
+                          if (isOutOfStock) {
+                            setOutOfStockSizeClicked(size);
+                            setTimeout(() => setOutOfStockSizeClicked(null), 2000);
+                          } else {
+                            setSelectedSize(size);
+                            setOutOfStockSizeClicked(null);
+                          }
+                        }}
+                        className={`px-2 py-2 rounded-lg border-2 font-medium transition-all ${
+                          isOutOfStock
+                            ? 'bg-muted text-muted-foreground border-border opacity-50 cursor-not-allowed line-through'
+                            : selectedSize === size
+                              ? 'bg-primary text-primary-foreground border-primary'
+                              : 'bg-card text-foreground border-border hover:border-primary'
+                        }`}
+                      >
+                        {size}
+                      </button>
+                    );
+                  })}
                 </div>
+                {outOfStockSizeClicked && (
+                  <p className="text-xs text-destructive mt-2">
+                    Size {outOfStockSizeClicked} is out of stock
+                  </p>
+                )}
               </div>
 
               {/* Stock Status */}
