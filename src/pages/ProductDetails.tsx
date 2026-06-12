@@ -7,6 +7,8 @@ import { useCart } from '@/context/CartContext';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { useToast } from '@/hooks/use-toast';
+import type { CartItem } from '@/types/product';
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import {
   Carousel,
   CarouselContent,
@@ -14,17 +16,18 @@ import {
   CarouselNext,
   CarouselPrevious
 } from '@/components/ui/carousel';
-import { ArrowLeft, MessageCircle, X } from 'lucide-react';
+import { ArrowLeft, MessageCircle, ShoppingCart, X } from 'lucide-react';
 import { config } from '@/env';
 
 export default function ProductDetails() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const { addToCart } = useCart();
+  const { items, addToCart } = useCart();
   const { toast } = useToast();
   const [selectedSize, setSelectedSize] = useState<string | null>(null);
   const [outOfStockSizeClicked, setOutOfStockSizeClicked] = useState<string | null>(null);
   const [showSizeGuide, setShowSizeGuide] = useState<boolean>(false);
+  const [whatsappDialogOpen, setWhatsappDialogOpen] = useState(false);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalIndex, setModalIndex] = useState(0);
@@ -88,6 +91,45 @@ export default function ProductDetails() {
   // In production, each product would have an array of images
   const productImages = product.images;
 
+  const nextCartItems: CartItem[] = selectedSize
+    ? (() => {
+        const existingItem = items.find(
+          (item) => item.product.id === product.id && item.size === selectedSize
+        );
+
+        if (existingItem) {
+          return items.map((item) =>
+            item.product.id === product.id && item.size === selectedSize
+              ? { ...item, quantity: item.quantity + 1 }
+              : item
+          );
+        }
+
+        return [...items, { product, size: selectedSize, quantity: 1 }];
+      })()
+    : items;
+
+  const nextCartTotal = nextCartItems.reduce(
+    (sum, item) => sum + item.product.price * item.quantity,
+    0
+  );
+
+  const buildWhatsAppMessage = (cartItems: CartItem[]) => {
+    let message = 'Hi! I would like to order:\n\n';
+
+    cartItems.forEach((item) => {
+      message += `• ${item.product.name} (Size: ${item.size}) x${item.quantity} - $${(
+        item.product.price * item.quantity
+      ).toFixed(2)}\n`;
+    });
+
+    message += `\nTotal: $${cartItems
+      .reduce((sum, item) => sum + item.product.price * item.quantity, 0)
+      .toFixed(2)}`;
+
+    return encodeURIComponent(message);
+  };
+
   const handleAddToCart = () => {
     if (!selectedSize) {
       toast({
@@ -104,10 +146,41 @@ export default function ProductDetails() {
     });
   };
 
+  const handleAddToCartAndKeepShopping = () => {
+    if (!selectedSize) {
+      toast({
+        title: 'Please select a size',
+        description: 'Choose a size before ordering via WhatsApp',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    addToCart(product, selectedSize);
+    toast({
+      title: 'Added to cart!',
+      description: `${product.name} (${selectedSize}) added to your cart`,
+    });
+    setWhatsappDialogOpen(false);
+  };
+
+  const handleOrderViaWhatsApp = () => {
+    if (!selectedSize) {
+      toast({
+        title: 'Please select a size',
+        description: 'Choose a size before ordering via WhatsApp',
+        variant: 'destructive',
+      });
+      return;
+    }
+
+    addToCart(product, selectedSize);
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${buildWhatsAppMessage(nextCartItems)}`;
+    setWhatsappDialogOpen(false);
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+  };
+
   const whatsappNumber = config.whatsappNumber;
-  const whatsappMessage = encodeURIComponent(
-    `Hi! I'm interested in: ${product.name} - $${product.price.toFixed(2)}`
-  );
 
   return (
     <div className="min-h-screen flex flex-col">
@@ -144,54 +217,6 @@ export default function ProductDetails() {
                 <CarouselPrevious className="left-2" />
                 <CarouselNext className="right-2" />
               </Carousel>
-
-              {/* Sizes Guide */}
-                <div className="mt-8">
-                <Button
-                  variant="outline"
-                  onClick={() => setShowSizeGuide(true)}
-                  className="w-full"
-                >
-                  View Size Guide
-                </Button>
-                </div>
-
-                {/* Size Guide Overlay */}
-                {showSizeGuide && (
-                <div
-                  className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
-                  onClick={() => setShowSizeGuide(false)}
-                >
-                    <div
-                    className="bg-background rounded-lg w-fit max-w-[90vw]"
-                    onClick={(e) => e.stopPropagation()}
-                    >
-                    <img
-                    src={new URL(
-                      `../assets/sizes/${
-                      product.category === 'zippers'
-                        ? 'zippers-portrait.jpg'
-                        : product.sleeve === 'sleeveless'
-                        ? 'overall-no-sleeves-portrait.jpg'
-                        : product.sleeve === 'short'
-                        ? 'overall-short-sleeves-portrait.jpg'
-                        : 'overall-long-sleeves-portrait.jpg'
-                      }`,
-                      import.meta.url
-                    ).href}
-                    alt="Size Guide"
-                    className="block w-auto max-w-[90vw] max-h-[80vh] object-contain rounded-lg"
-                    />
-                    <Button
-                    variant="ghost"
-                    onClick={() => setShowSizeGuide(false)}
-                    className="w-full mt-4"
-                    >
-                    Close
-                    </Button>
-                    </div>
-                </div>
-                )}
 
             {/* Image Modal */}
             {isModalOpen && (
@@ -316,8 +341,56 @@ export default function ProductDetails() {
                 )}
               </div>
 
+              {/* Sizes Guide */}
+                <div className="mt-0">
+                <Button
+                  variant="outline"
+                  onClick={() => setShowSizeGuide(true)}
+                  className="w-full"
+                >
+                  View Size Guide
+                </Button>
+                </div>
+
+                {/* Size Guide Overlay */}
+                {showSizeGuide && (
+                <div
+                  className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4"
+                  onClick={() => setShowSizeGuide(false)}
+                >
+                    <div
+                    className="bg-background rounded-lg w-fit max-w-[90vw]"
+                    onClick={(e) => e.stopPropagation()}
+                    >
+                    <img
+                    src={new URL(
+                      `../assets/sizes/${
+                      product.category === 'zippers'
+                        ? 'zippers-portrait.jpg'
+                        : product.sleeve === 'sleeveless'
+                        ? 'overall-no-sleeves-portrait.jpg'
+                        : product.sleeve === 'short'
+                        ? 'overall-short-sleeves-portrait.jpg'
+                        : 'overall-long-sleeves-portrait.jpg'
+                      }`,
+                      import.meta.url
+                    ).href}
+                    alt="Size Guide"
+                    className="block w-auto max-w-[90vw] max-h-[80vh] object-contain rounded-lg"
+                    />
+                    <Button
+                    variant="ghost"
+                    onClick={() => setShowSizeGuide(false)}
+                    className="w-full mt-4"
+                    >
+                    Close
+                    </Button>
+                    </div>
+                </div>
+                )}
+
               {/* Stock Status */}
-              <div className="mb-6">
+              <div className="mb-6 mt-6">
                 {product.inStock ? (
                   <span className="text-sm text-primary font-medium">
                     ✓ In Stock
@@ -337,24 +410,29 @@ export default function ProductDetails() {
                   className="w-full text-lg"
                   disabled={!product.inStock}
                 >
+                  <ShoppingCart className="h-5 w-5" />
                   Add to Cart
                 </Button>
+                <Button
+                  onClick={() => {
+                    if (!selectedSize) {
+                      toast({
+                        title: 'Please select a size',
+                        description: 'Choose a size before ordering via WhatsApp',
+                        variant: 'destructive',
+                      });
+                      return;
+                    }
 
-                <a
-                  href={`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
+                    setWhatsappDialogOpen(true);
+                  }}
+                  size="lg"
+                  className="w-full gap-2 bg-[hsl(142_70%_45%)] hover:bg-[hsl(142_70%_40%)] text-primary-foreground text-lg"
+                  disabled={!product.inStock}
                 >
-                  <Button
-                    variant="outline"
-                    size="lg"
-                    className="w-full gap-2 text-lg"
-                  >
-                    <MessageCircle className="h-5 w-5" />
-                    Ask on WhatsApp
-                  </Button>
-                </a>
+                  <MessageCircle className="h-5 w-5" />
+                  Order via WhatsApp
+                </Button>
               </div>
             </div>
             {/* Similar Products */}
@@ -398,6 +476,81 @@ export default function ProductDetails() {
           </div>
         </div>
       </main>
+
+      <Dialog open={whatsappDialogOpen} onOpenChange={setWhatsappDialogOpen}>
+        <DialogContent className="sm:max-w-xl">
+          <DialogHeader>
+            <DialogTitle>Order via WhatsApp</DialogTitle>
+            <DialogDescription>
+              Review the cart below. You can keep shopping, or send the updated cart to WhatsApp now.
+            </DialogDescription>
+          </DialogHeader>
+
+          <div className="space-y-4">
+            <div className="rounded-lg border border-border bg-muted/40 p-4">
+              <div className="mb-3 flex items-center justify-between gap-2">
+                <h4 className="font-medium text-foreground">Cart preview</h4>
+                <span className="text-sm text-muted-foreground">
+                  {nextCartItems.length} item{nextCartItems.length === 1 ? '' : 's'}
+                </span>
+              </div>
+
+              <div className="max-h-56 space-y-3 overflow-y-auto pr-1">
+                {nextCartItems.length === 0 ? (
+                  <p className="text-sm text-muted-foreground">Your cart is empty.</p>
+                ) : (
+                  nextCartItems.map((item) => (
+                    <div
+                      key={`${item.product.id}-${item.size}`}
+                      className="flex items-center justify-between gap-3 rounded-md bg-background px-3 py-2"
+                    >
+                      <div>
+                        <p className="font-medium text-foreground">{item.product.name}</p>
+                        <p className="text-sm text-muted-foreground">Size: {item.size}</p>
+                      </div>
+                      <div className="text-right">
+                        <p className="text-sm text-foreground">x{item.quantity}</p>
+                        <p className="text-sm font-medium text-primary">
+                          ${(item.product.price * item.quantity).toFixed(2)}
+                        </p>
+                      </div>
+                    </div>
+                  ))
+                )}
+              </div>
+
+              <div className="mt-4 flex items-center justify-between border-t border-border pt-3">
+                <span className="font-semibold text-foreground">Total</span>
+                <span className="font-semibold text-primary">${nextCartTotal.toFixed(2)}</span>
+              </div>
+            </div>
+
+            {selectedSize && (
+              <div className="rounded-lg border border-dashed border-border p-4">
+                <p className="text-sm font-medium text-foreground">Selected item</p>
+                <p className="text-sm text-muted-foreground">
+                  {product.name} - Size {selectedSize}
+                </p>
+              </div>
+            )}
+          </div>
+
+          <DialogFooter className="gap-2 sm:gap-0">
+            <Button variant="outline" onClick={handleAddToCartAndKeepShopping}>
+              <ShoppingCart className="h-4 w-4" />
+              Add to cart and keep shopping
+            </Button>
+            <Button
+              onClick={handleOrderViaWhatsApp}
+              className="gap-2 bg-[hsl(142_70%_45%)] hover:bg-[hsl(142_70%_40%)] text-primary-foreground"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Order now on WhatsApp
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
+
       <Footer />
     </div>
   );
