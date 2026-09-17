@@ -23,10 +23,10 @@ export const faqs = [
         question: "When will my order ship?",
         answer: "We aim to ship all orders within one business day. Standard shipping typically takes 1-4 days, depending on your location. Expedited and priority orders ship no later than the next business day."
     },
-    {
-        question: "How much does shipping cost?",
-        answer: "Enjoy free shipping on all orders over $50. We want your shopping experience with DANDELION to be easy, enjoyable, and worry-free."
-    },
+    // {
+    //     question: "How much does shipping cost?",
+    //     answer: "Enjoy free shipping on all orders over $50. We want your shopping experience with DANDELION to be easy, enjoyable, and worry-free."
+    // },
     {
         question: "Can I change my order after placing it?",
         answer: "Please review your items, sizes, and shipping details carefully before completing your purchase. Orders are processed quickly, but if you notice an error, email us as soon as possible at welovedandelion.lb@gmail.com. We will do our best to make changes before your order ships."
